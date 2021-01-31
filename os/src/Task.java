@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Task {
 
     private StateTask state;
-    private int time;
+    private int untilTime;
     private Priority priority;
     private String name;
     private HashMap<Resource, Integer> needed;
@@ -41,12 +41,12 @@ public class Task {
         this.state = state;
     }
 
-    public int getTime() {
-        return time;
+    public int getUntilTime() {
+        return untilTime;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setUntilTime(int untilTime) {
+        this.untilTime = untilTime;
     }
 
     public Priority getPriority() {

@@ -1,6 +1,6 @@
 package Algorithm;
 
-public class FirstComeServed {
+public class FCFS {
     public static void run() {
 
     }

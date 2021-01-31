@@ -1,22 +1,21 @@
-public class CPU extends Thread {
-    int number;
+public class CPU {
 
-    CPU(int number) {
-        this.number = number;
-        this.start();
+    private Core[] cores = new Core[4];
+    private Queue queue = new Queue();
+
+    public Core[] getCores() {
+        return cores;
     }
 
-    public int getNumber() {
-        return number;
+    public void setCores(Core[] cores) {
+        this.cores = cores;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public Queue getQueue() {
+        return queue;
     }
 
-    @Override
-    public void run() {
-        super.run();
-        System.out.println("CPU is " + number);
+    public void setQueue(Queue queue) {
+        this.queue = queue;
     }
 }

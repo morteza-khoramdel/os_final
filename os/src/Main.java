@@ -38,14 +38,11 @@ public class Main {
             String[] eachInfo = eachTask.split(" ");//0 name  1 priority 2 taskDuration
             int taskDuration = Integer.parseInt(eachInfo[2]);
             System.out.println(taskDuration);
-            tasks.add(new Task(StateTask.WAITING,
+            tasks.add(new Task(StateTask.READY,
                     eachInfo[1].equals("X") ? Priority.X : (eachInfo[1].equals("Y") ? Priority.Y : (eachInfo[1].equals("Z") ? Priority.Z : Priority.X))
                     , eachInfo[0], taskDuration));
         }
-        CPU cpu1 = new CPU(1);
-        CPU cpu2 = new CPU(2);
-        CPU cpu3 = new CPU(3);
-        CPU cpu4 = new CPU(4);
+        CPU cpu = new CPU();
 
     }
 }
