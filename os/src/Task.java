@@ -1,5 +1,9 @@
+import Enum.Priority;
+import Enum.Resource;
+import Enum.StateTask;
+
 import java.util.HashMap;
-import Enum.*;
+
 public class Task {
 
     private StateTask state;
@@ -7,11 +11,13 @@ public class Task {
     private Priority priority;
     private String name;
     private HashMap<Resource, Integer> needed;
+    private int taskDuration;
 
-    public Task(StateTask state, Priority priority, String name) {
+    public Task(StateTask state, Priority priority, String name , int taskDuration ) {
         this.name = name;
         this.state = state;
         this.priority = priority;
+        this.taskDuration = taskDuration;
         needed = new HashMap<>();
         if (priority.equals(Priority.X)) {
             needed.put(Resource.A, 1);
@@ -63,8 +69,13 @@ public class Task {
         return needed;
     }
 
-    public void setNeeded(HashMap<Resource, Integer> needed) {
-        this.needed = needed;
+
+    public int getTaskDuration() {
+        return taskDuration;
+    }
+
+    public void setTaskDuration(int taskDuration) {
+        this.taskDuration = taskDuration;
     }
 
     @Override
