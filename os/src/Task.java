@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+import Enum.*;
 public class Task {
 
     private StateTask state;
