@@ -1,5 +1,14 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Main {
+    private static HashMap<Resource ,Integer> resourceMap;
     public static void main(String[] args) {
+        resourceMap = new HashMap<>();
+        Scanner sc= new Scanner(System.in);
+        resourceMap.put(Resource.A , sc.nextInt());
+        resourceMap.put(Resource.B , sc.nextInt());
+        resourceMap.put(Resource.C , sc.nextInt());
         CPU cpu1 = new CPU(1);
         CPU cpu2 = new CPU(2);
         CPU cpu3 = new CPU(3);

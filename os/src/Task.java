@@ -6,7 +6,7 @@ public class Task {
     private int time;
     private Priority priority;
     private String name;
-    private HashMap<String, Integer> needed;
+    private HashMap<Resource, Integer> needed;
 
     public Task(StateTask state, Priority priority, String name) {
         this.name = name;
@@ -14,14 +14,14 @@ public class Task {
         this.priority = priority;
         needed = new HashMap<>();
         if (priority.equals(Priority.X)) {
-            needed.put("A", 1);
-            needed.put("B", 1);
+            needed.put(Resource.A, 1);
+            needed.put(Resource.B, 1);
         } else if (priority.equals(Priority.Y)) {
-            needed.put("C", 1);
-            needed.put("B", 1);
+            needed.put(Resource.C, 1);
+            needed.put(Resource.B, 1);
         } else if (priority.equals(Priority.Z)) {
-            needed.put("A", 1);
-            needed.put("C", 1);
+            needed.put(Resource.A, 1);
+            needed.put(Resource.C, 1);
         }
 
 
@@ -59,11 +59,11 @@ public class Task {
         this.name = name;
     }
 
-    public HashMap<String, Integer> getNeeded() {
+    public HashMap<Resource, Integer> getNeeded() {
         return needed;
     }
 
-    public void setNeeded(HashMap<String, Integer> needed) {
+    public void setNeeded(HashMap<Resource, Integer> needed) {
         this.needed = needed;
     }
 
