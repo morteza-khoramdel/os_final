@@ -1,11 +1,14 @@
-import Enum.Priority;
-import Enum.Resource;
-import Enum.StateTask;
+package os;
+
+import os.Enum.Priority;
+import os.Enum.Resource;
+import os.Enum.StateTask;
 
 import java.util.HashMap;
 
 public class Task {
 
+    private boolean isAssigned = false;
     private StateTask state;
     private int untilTime;
     private Priority priority;
@@ -13,7 +16,7 @@ public class Task {
     private HashMap<Resource, Integer> needed;
     private int taskDuration;
 
-    public Task(StateTask state, Priority priority, String name , int taskDuration ) {
+    public Task(StateTask state, Priority priority, String name, int taskDuration) {
         this.name = name;
         this.state = state;
         this.priority = priority;
@@ -78,9 +81,17 @@ public class Task {
         this.taskDuration = taskDuration;
     }
 
+    public boolean isAssigned() {
+        return isAssigned;
+    }
+
+    public void setAssigned(boolean assigned) {
+        isAssigned = assigned;
+    }
+
     @Override
     public String toString() {
-        return "Task{" +
+        return "os.Task{" +
                 "name='" + name + '\'' +
                 '}';
     }

@@ -1,6 +1,15 @@
-public class Queue {
-    private java.util.Queue<Task> waitingTask ;
-    private java.util.Queue<Task> readyTask ;
+package os;
+
+import java.util.LinkedList;
+
+public class QueueScheduling {
+    private java.util.Queue<Task> waitingTask;
+    private java.util.Queue<Task> readyTask;
+
+    QueueScheduling() {
+        waitingTask = new LinkedList<>();
+        readyTask = new LinkedList<>();
+    }
 
     public java.util.Queue<Task> getWaitingTask() {
         return waitingTask;

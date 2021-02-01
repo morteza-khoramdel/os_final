@@ -1,3 +1,4 @@
+package os;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,7 +10,7 @@ public class CPU {
 
     CPU() {
         cores = new Core[4];
-        queue =new LinkedList<>();
+        queue = new LinkedList<>();
     }
 
     public Core[] getCores() {

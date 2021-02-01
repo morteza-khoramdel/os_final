@@ -1,7 +1,9 @@
+package os;
 
-import Enum.StateCore;
+import os.Enum.StateCore;
+
 public class Core extends Thread {
-    StateCore stateCore = StateCore.IDLE;
+    private StateCore stateCore = StateCore.IDLE;
     private Task activeTask;
 
     public StateCore getStateCore() {

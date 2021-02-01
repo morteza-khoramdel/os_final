@@ -1,21 +1,23 @@
+package os;
 
-import Algorithm.Algorithm;
-import Algorithm.FCFS;
-import Algorithm.RR;
-import Algorithm.SJF;
-import Enum.Priority;
-import Enum.Resource;
-import Enum.StateTask;
+import os.AlgorithmScheduling.Algorithm;
+import os.AlgorithmScheduling.FCFS;
+import os.AlgorithmScheduling.RR;
+import os.AlgorithmScheduling.SJF;
+import os.Enum.Priority;
+import os.Enum.Resource;
+import os.Enum.StateTask;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
     private static HashMap<Resource, Integer> resourceMap;
-    private static ArrayList<Task> tasks;
-    private static int allTime = 0;
-    private static Scanner sc = new Scanner(System.in);
+    private static QueueScheduling queueScheduling;
+    private static java.util.Queue<Task> queueReady;
+    private static final int allTime = 0;
+    private static final Scanner sc = new Scanner(System.in);
     private static Algorithm algorithm;
 
     public static void main(String[] args) {
@@ -25,14 +27,16 @@ public class Main {
 
     private static void startTasks() {
         CPU cpu = new CPU();
-        while (tasks.size() != 0) {
-
+        while (queueScheduling.getReadyTask().size() != 0 && queueScheduling.getWaitingTask().size() != 0) {
+            //sort by Scheduling
+            algorithm.runScheduling(queueScheduling);
         }
     }
 
     private static void init() {
         resourceMap = new HashMap<>();
-        tasks = new ArrayList<>();
+        queueScheduling = new QueueScheduling();
+        queueReady = new LinkedList<>();
         System.out.println("Welcome to My Scheduler");
         System.out.println("Please Enter Resource A B C");
         resourceMap.put(Resource.A, sc.nextInt());
@@ -47,10 +51,11 @@ public class Main {
             String eachTask = sc.nextLine();
             String[] eachInfo = eachTask.split(" ");//0 name  1 priority 2 taskDuration
             int taskDuration = Integer.parseInt(eachInfo[2]);
-            tasks.add(new Task(StateTask.READY,
+            queueReady.add(new Task(StateTask.READY,
                     eachInfo[1].equals("X") ? Priority.X : (eachInfo[1].equals("Y") ? Priority.Y : (eachInfo[1].equals("Z") ? Priority.Z : Priority.X))
                     , eachInfo[0], taskDuration));
         }
+        queueScheduling.setReadyTask(queueReady);
         initScheduling();
 
     }
