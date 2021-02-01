@@ -1,7 +1,6 @@
 package Algorithm;
 
-public class FCFS extends Algorithm {
-
+public class RR extends Algorithm{
 
     @Override
     void runScheduling() {

@@ -1,5 +1,5 @@
-import Enum.StateCore;
 
+import Enum.StateCore;
 public class Core extends Thread {
     StateCore stateCore = StateCore.IDLE;
     private Task activeTask;
