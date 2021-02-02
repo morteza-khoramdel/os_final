@@ -24,19 +24,21 @@ public class Main {
 
     private static void startTasks() {
         CPU cpu = new CPU();
+
         while (queueScheduling.getReadyTask().size() != 0 && queueScheduling.getWaitingTask().size() != 0) {
             //sort by Scheduling
             algorithm.runScheduling(queueScheduling);
-            for (int i = 0; i < queueScheduling.getReadyTask().size(); i++) {
-                Task task = queueScheduling.getReadyTask().peek();
-                if (Objects.requireNonNull(task).canAssigned()) {
 
-                } else {
-                    Queue<Task> queue = queueScheduling.getWaitingTask();
-                    queue.add(task);
-                    queueScheduling.setWaitingTask(queue);
-                }
-            }
+//            for (int i = 0; i < queueScheduling.getReadyTask().size(); i++) {
+//                Task task = queueScheduling.getReadyTask().peek();
+//                if (Objects.requireNonNull(task).canAssigned()) {
+//
+//                } else {
+//                    Queue<Task> queue = queueScheduling.getWaitingTask();
+//                    queue.add(task);
+//                    queueScheduling.setWaitingTask(queue);
+//                }
+//            }
 
         }
     }

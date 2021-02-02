@@ -1,16 +1,16 @@
 package os;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class CPU {
 
     private Core[] cores;
-    private Queue<Task> queue;
+    private QueueScheduling queue;
 
     CPU() {
         cores = new Core[4];
-        queue = new LinkedList<>();
+        for (Core core : cores) {
+            core.start();
+        }
+        queue = new QueueScheduling();
     }
 
     public Core[] getCores() {
@@ -21,11 +21,11 @@ public class CPU {
         this.cores = cores;
     }
 
-    public Queue<Task> getQueue() {
+    public QueueScheduling getQueue() {
         return queue;
     }
 
-    public void setQueue(Queue<Task> queue) {
+    public void setQueue(QueueScheduling queue) {
         this.queue = queue;
     }
 }
