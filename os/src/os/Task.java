@@ -13,7 +13,7 @@ public class Task {
     private int untilTime;
     private Priority priority;
     private String name;
-    private HashMap<Resource, Integer> needed;
+    private final HashMap<Resource, Integer> needed;
     private int taskDuration;
 
     public Task(StateTask state, Priority priority, String name, int taskDuration) {
@@ -84,7 +84,9 @@ public class Task {
     public boolean isAssigned() {
         return isAssigned;
     }
-
+    public boolean canAssigned(){
+        return true;
+    }
     public void setAssigned(boolean assigned) {
         isAssigned = assigned;
     }

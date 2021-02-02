@@ -8,14 +8,11 @@ import os.Enum.Priority;
 import os.Enum.Resource;
 import os.Enum.StateTask;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static HashMap<Resource, Integer> resourceMap;
     private static QueueScheduling queueScheduling;
-    private static java.util.Queue<Task> queueReady;
     private static final int allTime = 0;
     private static final Scanner sc = new Scanner(System.in);
     private static Algorithm algorithm;
@@ -30,13 +27,24 @@ public class Main {
         while (queueScheduling.getReadyTask().size() != 0 && queueScheduling.getWaitingTask().size() != 0) {
             //sort by Scheduling
             algorithm.runScheduling(queueScheduling);
+            for (int i = 0; i < queueScheduling.getReadyTask().size(); i++) {
+                Task task = queueScheduling.getReadyTask().peek();
+                if (Objects.requireNonNull(task).canAssigned()) {
+
+                } else {
+                    Queue<Task> queue = queueScheduling.getWaitingTask();
+                    queue.add(task);
+                    queueScheduling.setWaitingTask(queue);
+                }
+            }
+
         }
     }
 
     private static void init() {
         resourceMap = new HashMap<>();
         queueScheduling = new QueueScheduling();
-        queueReady = new LinkedList<>();
+        java.util.Queue<Task> queueReady = new LinkedList<>();
         System.out.println("Welcome to My Scheduler");
         System.out.println("Please Enter Resource A B C");
         resourceMap.put(Resource.A, sc.nextInt());
